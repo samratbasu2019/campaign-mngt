@@ -26,8 +26,8 @@ public class ContactDetailService {
 		ResponseStatus resStat= ccDao.updateDataset(cdpojo);
 		return resStat;
 	}
-	public Object getContact(String documentID) {
-		Object resStat= ccDao.findRecordSet(documentID);
+	public Object getContact(String userID) {
+		Object resStat= ccDao.findRecordSet(userID);
 		return resStat;
 	}
 

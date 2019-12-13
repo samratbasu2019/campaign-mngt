@@ -25,7 +25,8 @@ public class CampaignContactDAO {
 		try {
 			cotactDetails.setContactEmails(cdpojo.getContactEmails());
 			cotactDetails.setAliasGroup(cdpojo.getAliasGroup());
-			ccRepository.saveAndFlush(cotactDetails);
+			cotactDetails.setUserId(cdpojo.getUserId());
+			ccRepository.save(cotactDetails);
 			resStatus.setStatCode(200);
 			resStatus.setStatus("success");
 			resStatus.setMessage("Data successfully saved");
@@ -39,9 +40,9 @@ public class CampaignContactDAO {
 		return resStatus;
 	}
 
-	public Object findRecordSet(String contactID) {
+	public Object findRecordSet(String userID) {
 		Object obj = null;
-		obj = ccRepository.findContactById(Integer.parseInt(contactID));
+		obj = ccRepository.findContactByUserId(Integer.parseInt(userID));
 		return obj;
 	}
 

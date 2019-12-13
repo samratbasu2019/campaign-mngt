@@ -50,11 +50,11 @@ public class CampaignController<T> {
 		return resStatus;
 	}
 	
-	@RequestMapping(value = "/contacts/getContact/{contactID}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Object getPhrases(@PathVariable("documentID") String contactID) {
-		log.debug("Inside getPhrases Controller Samrat :" + contactID );		
+	@RequestMapping(value = "/contacts/getContact",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Object getPhrases(@RequestParam("userid") String userID) {
+		log.debug("Inside getPhrases Controller Samrat :" + userID );		
 		long starttime = System.currentTimeMillis();
-		Object resStatus = cdService.getContact(contactID);	
+		Object resStatus = cdService.getContact(userID);	
 		long endtime = System.currentTimeMillis();
 		log.debug("Total processing time "+ (endtime -starttime)+ " ms.");		
 		return resStatus;

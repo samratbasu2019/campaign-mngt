@@ -28,7 +28,7 @@ import javax.persistence.Table;
 @Table(name = "contact_details")
 public class ContactDetails {
 	@Id
-	@GeneratedValue
+	@GeneratedValue (strategy = GenerationType.AUTO)
 	@Column(name = "id") 
 	private Integer id;
 	@Column(name = "user_id") 
