@@ -1,7 +1,5 @@
 package com.org.infy.campaign.dao;
 
-
-
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -49,19 +47,23 @@ public class CampaignContactDAO {
 		obj = ccRepository.findContactByUserId(Integer.parseInt(userID));
 		return obj;
 	}
-	
+
 	public ResponseStatus updateDataset(Integer userid, ContactDetailsPojo cdpojo) {
 		ContactDetails cotactDetails = ccRepository.findSingleContactByUserId(userid);
 		ResponseStatus resStatus = new ResponseStatus();
-		try {			
-			  cotactDetails.setContactEmails(cdpojo.getContactEmails());
-			  cotactDetails.setAliasGroup(cdpojo.getAliasGroup());			  
-			  ccRepository.save(cotactDetails); 
-			  resStatus.setStatCode(200);
-			  resStatus.setStatus("success");
-			 
-		
-			resStatus.setMessage("Data successfully updated");
+		try {
+			if (cotactDetails != null) {
+				cotactDetails.setContactEmails(cdpojo.getContactEmails());
+				cotactDetails.setAliasGroup(cdpojo.getAliasGroup());
+				ccRepository.save(cotactDetails);
+				resStatus.setStatCode(200);
+				resStatus.setStatus("success");
+				resStatus.setMessage("Data successfully updated");
+			} else {
+				resStatus.setStatCode(401);
+				resStatus.setStatus("failure");
+				resStatus.setMessage("Bad Request, user id do not exist");
+			}
 
 		} catch (Exception ex) {
 			resStatus.setStatCode(401);
@@ -71,7 +73,7 @@ public class CampaignContactDAO {
 		}
 		return resStatus;
 	}
-	
+
 	public Object findAll() {
 		Object obj = null;
 		obj = ccRepository.findAll();
