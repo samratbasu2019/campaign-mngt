@@ -40,24 +40,45 @@ public class CampaignController<T> {
 	@Autowired
 	private ContactDetailService cdService;
 	
-	@RequestMapping(value = "/contacts/updateContact",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseStatus updatePhrases(@RequestBody final ContactDetailsPojo cdPojo) {
-		log.debug("Inside Update Phrases Controller");		
+	@RequestMapping(value = "/contacts/addContact",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseStatus addContact(@RequestBody final ContactDetailsPojo cdPojo) {
+		log.debug("Inside Update addContact Controller");		
 		long starttime = System.currentTimeMillis();
-		ResponseStatus resStatus = cdService.updateContact(cdPojo);	
+		ResponseStatus resStatus = cdService.addContact(cdPojo);	
 		long endtime = System.currentTimeMillis();
 		log.debug("Total processing time "+ (endtime -starttime)+ " ms.");		
 		return resStatus;
 	}
 	
 	@RequestMapping(value = "/contacts/getContact",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Object getPhrases(@RequestParam("userid") String userID) {
-		log.debug("Inside getPhrases Controller Samrat :" + userID );		
+	public Object getContact(@RequestParam("userid") String userID) {
+		log.debug("Inside getContact Controller :" + userID );		
 		long starttime = System.currentTimeMillis();
 		Object resStatus = cdService.getContact(userID);	
 		long endtime = System.currentTimeMillis();
 		log.debug("Total processing time "+ (endtime -starttime)+ " ms.");		
 		return resStatus;
 	}
+	
+	@RequestMapping(value = "/contacts/findAll",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Object findAll() {
+		log.debug("Inside findAll Controller" );		
+		long starttime = System.currentTimeMillis();
+		Object resStatus = cdService.findAll();	
+		long endtime = System.currentTimeMillis();
+		log.debug("Total processing time "+ (endtime -starttime)+ " ms.");		
+		return resStatus;
+	}
+	
+	@RequestMapping(value = "/contacts/updateContact",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseStatus updateContact(@RequestParam("userid") String userID, @RequestBody final ContactDetailsPojo cdPojo) {
+		log.debug("Inside Update updateContact Controller");		
+		long starttime = System.currentTimeMillis();
+		ResponseStatus resStatus = cdService.updateContact(Integer.parseInt(userID),cdPojo);	
+		long endtime = System.currentTimeMillis();
+		log.debug("Total processing time "+ (endtime -starttime)+ " ms.");		
+		return resStatus;
+	}
+	
 	
 }

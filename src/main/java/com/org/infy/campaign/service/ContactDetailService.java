@@ -22,12 +22,22 @@ public class ContactDetailService {
 	@Autowired
 	private CampaignContactDAO ccDao;
 
-	public ResponseStatus updateContact(ContactDetailsPojo cdpojo) {
-		ResponseStatus resStat= ccDao.updateDataset(cdpojo);
+	public ResponseStatus addContact(ContactDetailsPojo cdpojo) {
+		ResponseStatus resStat= ccDao.addDataset(cdpojo);
 		return resStat;
 	}
 	public Object getContact(String userID) {
 		Object resStat= ccDao.findRecordSet(userID);
+		return resStat;
+	}
+	
+	public Object findAll() {
+		Object resStat= ccDao.findAll();
+		return resStat;
+	}
+	
+	public ResponseStatus updateContact(Integer userid, ContactDetailsPojo cdpojo) {
+		ResponseStatus resStat= ccDao.updateDataset(userid, cdpojo);
 		return resStat;
 	}
 
