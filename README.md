@@ -40,7 +40,6 @@ http://localhost:8300/core/contacts/updateContact?userid=2
 }
 
 http://localhost:8300/core/contacts/getContact?userid=2 
-
 http://localhost:8300/core/contacts/findAll 
 
 
