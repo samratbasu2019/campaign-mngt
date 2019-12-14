@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.org.infy.binary</groupId>
-	<artifactId>campaign-contact</artifactId>
+	<artifactId>campaign-mngt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>infy-binary</name>
 	<description>Infy project in Spring Boot</description>

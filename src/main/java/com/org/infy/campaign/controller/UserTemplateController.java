@@ -16,7 +16,7 @@ import com.org.infy.campaign.service.UserTemplateService;
 @RestController
 @RequestMapping(value = "/core")
 public class UserTemplateController {
-	private final static Logger log = Logger.getLogger(CampaignController.class);
+	private final static Logger log = Logger.getLogger(CampaignContactController.class);
 
 	@Autowired
 	private UserTemplateService utService;

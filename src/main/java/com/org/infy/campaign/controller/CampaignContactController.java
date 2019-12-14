@@ -34,8 +34,8 @@ import com.org.infy.campaign.service.ContactDetailService;
 
 @RestController
 @RequestMapping(value = "/core")
-public class CampaignController<T> {
-	private final static Logger log = Logger.getLogger(CampaignController.class);
+public class CampaignContactController<T> {
+	private final static Logger log = Logger.getLogger(CampaignContactController.class);
 
 	@Autowired
 	private ContactDetailService cdService;
