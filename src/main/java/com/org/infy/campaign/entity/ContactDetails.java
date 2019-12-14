@@ -33,11 +33,9 @@ public class ContactDetails {
 	private Integer id;
 	@Column(name = "user_id") 
 	private Integer userId;
-	/* @Column(name = "document_id") */
 	private String contactEmails;
-	/* @Column(name = "file_Name") */
 	private String aliasGroup;
-	/* @Column(name = "phrase") */
+	
 	public Integer getUserId() {
 		return userId;
 	}
